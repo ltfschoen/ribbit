@@ -20,6 +20,12 @@
 		A31249C6191BA907003D974A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A31249C4191BA907003D974A /* InfoPlist.strings */; };
 		A31249C8191BA907003D974A /* RibbitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31249C7191BA907003D974A /* RibbitTests.m */; };
 		A31249D2191BA918003D974A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A31249D1191BA918003D974A /* MainStoryboard.storyboard */; };
+		A31249D9191BB390003D974A /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A31249D3191BB390003D974A /* camera.png */; };
+		A31249DA191BB390003D974A /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A31249D4191BB390003D974A /* camera@2x.png */; };
+		A31249DB191BB390003D974A /* friends.png in Resources */ = {isa = PBXBuildFile; fileRef = A31249D5191BB390003D974A /* friends.png */; };
+		A31249DC191BB390003D974A /* friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A31249D6191BB390003D974A /* friends@2x.png */; };
+		A31249DD191BB390003D974A /* inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A31249D7191BB390003D974A /* inbox.png */; };
+		A31249DE191BB390003D974A /* inbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A31249D8191BB390003D974A /* inbox@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,12 @@
 		A31249C5191BA907003D974A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A31249C7191BA907003D974A /* RibbitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RibbitTests.m; sourceTree = "<group>"; };
 		A31249D1191BA918003D974A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		A31249D3191BB390003D974A /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		A31249D4191BB390003D974A /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		A31249D5191BB390003D974A /* friends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends.png; sourceTree = "<group>"; };
+		A31249D6191BB390003D974A /* friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends@2x.png"; sourceTree = "<group>"; };
+		A31249D7191BB390003D974A /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
+		A31249D8191BB390003D974A /* inbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,7 @@
 		A3124996191BA907003D974A = {
 			isa = PBXGroup;
 			children = (
+				A31249DF191BB393003D974A /* Images */,
 				A31249D1191BA918003D974A /* MainStoryboard.storyboard */,
 				A31249A8191BA907003D974A /* Ribbit */,
 				A31249C1191BA907003D974A /* RibbitTests */,
@@ -145,6 +158,19 @@
 				A31249C4191BA907003D974A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A31249DF191BB393003D974A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A31249D3191BB390003D974A /* camera.png */,
+				A31249D4191BB390003D974A /* camera@2x.png */,
+				A31249D5191BB390003D974A /* friends.png */,
+				A31249D6191BB390003D974A /* friends@2x.png */,
+				A31249D7191BB390003D974A /* inbox.png */,
+				A31249D8191BB390003D974A /* inbox@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,8 +249,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31249D2191BA918003D974A /* MainStoryboard.storyboard in Resources */,
+				A31249DB191BB390003D974A /* friends.png in Resources */,
+				A31249DC191BB390003D974A /* friends@2x.png in Resources */,
+				A31249DA191BB390003D974A /* camera@2x.png in Resources */,
+				A31249DD191BB390003D974A /* inbox.png in Resources */,
 				A31249AD191BA907003D974A /* InfoPlist.strings in Resources */,
+				A31249D9191BB390003D974A /* camera.png in Resources */,
 				A31249B5191BA907003D974A /* Images.xcassets in Resources */,
+				A31249DE191BB390003D974A /* inbox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
