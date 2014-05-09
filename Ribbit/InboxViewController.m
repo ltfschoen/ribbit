@@ -22,19 +22,6 @@
 {
     [super viewDidLoad];
     
-    // test saving data on Parse.com SDK by calling their API
-    // define creates Parse.com table named "TestObject"
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    
-    // sets value "bar" for key "foo" in row of the database table
-    // [testObject setObject:@"bar" forKey:@"foo"];
-    testObject[@"foo"] = @"bar";
-    
-    // save method to save data on Parse.com back-end
-    [testObject saveInBackground];
-    
-    // test initial functionality of Storyboard segue
-    [self performSegueWithIdentifier:@"showLogin" sender:self];
 }
 
 #pragma mark - Table view data source

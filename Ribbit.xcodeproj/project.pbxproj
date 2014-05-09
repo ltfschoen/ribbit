@@ -37,6 +37,8 @@
 		A31249F7191CBD2E003D974A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31249EE191CBD2E003D974A /* Security.framework */; };
 		A31249F8191CBD2E003D974A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31249EF191CBD2E003D974A /* StoreKit.framework */; };
 		A31249F9191CBD2E003D974A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31249F0191CBD2E003D974A /* SystemConfiguration.framework */; };
+		A31249FC191CCA65003D974A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31249FB191CCA65003D974A /* LoginViewController.m */; };
+		A31249FF191CCA80003D974A /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31249FE191CCA80003D974A /* SignupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,10 @@
 		A31249EE191CBD2E003D974A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A31249EF191CBD2E003D974A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A31249F0191CBD2E003D974A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A31249FA191CCA65003D974A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
+		A31249FB191CCA65003D974A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
+		A31249FD191CCA80003D974A /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ../SignupViewController.h; sourceTree = "<group>"; };
+		A31249FE191CCA80003D974A /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ../SignupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +178,10 @@
 				A31249A9191BA907003D974A /* Supporting Files */,
 				A31249E3191C70C0003D974A /* InboxViewController.h */,
 				A31249E4191C70C0003D974A /* InboxViewController.m */,
+				A31249FD191CCA80003D974A /* SignupViewController.h */,
+				A31249FE191CCA80003D974A /* SignupViewController.m */,
+				A31249FA191CCA65003D974A /* LoginViewController.h */,
+				A31249FB191CCA65003D974A /* LoginViewController.m */,
 			);
 			path = Ribbit;
 			sourceTree = "<group>";
@@ -320,9 +330,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A31249FC191CCA65003D974A /* LoginViewController.m in Sources */,
 				A31249B3191BA907003D974A /* AppDelegate.m in Sources */,
 				A31249AF191BA907003D974A /* main.m in Sources */,
 				A31249E5191C70C0003D974A /* InboxViewController.m in Sources */,
+				A31249FF191CCA80003D974A /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

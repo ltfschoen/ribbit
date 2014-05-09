@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="560" y="-499"/>
         </scene>
-        <!--View Controller - Ribbit Sign In-->
+        <!--Login View Controller - Ribbit Sign In-->
         <scene sceneID="YdP-gt-laa">
             <objects>
-                <viewController id="Qkh-tF-eIy" sceneMemberID="viewController">
+                <viewController id="Qkh-tF-eIy" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="czZ-Tb-hXH"/>
                         <viewControllerLayoutGuide type="bottom" id="Rec-Ag-7Xm"/>
@@ -173,10 +173,10 @@
             </objects>
             <point key="canvasLocation" x="560" y="915"/>
         </scene>
-        <!--View Controller - Ribbit Sign Up-->
+        <!--Signup View Controller - Ribbit Sign Up-->
         <scene sceneID="A8J-ur-N1v">
             <objects>
-                <viewController id="6Db-qA-WfX" sceneMemberID="viewController">
+                <viewController id="6Db-qA-WfX" customClass="SignupViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ec8-Vn-OhX"/>
                         <viewControllerLayoutGuide type="bottom" id="6Bo-cU-p9J"/>
