@@ -204,6 +204,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="signup:" destination="6Db-qA-WfX" eventType="touchUpInside" id="Pol-uj-kdg"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1lG-P5-o7z">
                                 <rect key="frame" x="20" y="154" width="280" height="30"/>
@@ -215,6 +218,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ribbit Sign Up" id="vbi-0M-D1P"/>
+                    <connections>
+                        <outlet property="emailField" destination="1lG-P5-o7z" id="48z-jU-AoF"/>
+                        <outlet property="passwordField" destination="l3f-q8-P6o" id="r6C-gE-Cpg"/>
+                        <outlet property="usernameField" destination="PpS-UT-zhJ" id="Xd7-Kg-cVm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9z-5u-KOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

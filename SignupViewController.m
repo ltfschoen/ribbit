@@ -10,40 +10,41 @@
 
 @interface SignupViewController ()
 
+@property (strong, nonatomic) IBOutlet UITextField *usernameField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordField;
+@property (strong, nonatomic) IBOutlet UITextField *emailField;
+
+- (IBAction)signup:(id)sender;
+
 @end
 
 @implementation SignupViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)signup:(id)sender {
+    
+    // check for appropriate data to keep values clean
+    // get values from Storyboard text fields and store as variables
+    // check for no leading or trailing whitespaces
+    NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *password = [self.passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *email = [self.emailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    // check all fields set (no blank data) or give users error message
+    if ([username length] == 0 || [password length] == 0 || [email length] ==0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                  message:@"Please enter values in all fields"
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        // show alert
+        [alertView show];
+    }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
