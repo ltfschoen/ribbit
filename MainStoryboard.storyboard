@@ -8,7 +8,7 @@
         <scene sceneID="Ybw-cZ-84N">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="iRj-cC-TWP" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="MAq-sw-JnL">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -16,15 +16,15 @@
                     </tabBar>
                     <connections>
                         <segue destination="lcL-Nw-ttO" kind="relationship" relationship="viewControllers" id="A8k-6d-hkK"/>
-                        <segue destination="8vx-TT-h8I" kind="relationship" relationship="viewControllers" id="QDa-Wz-exn"/>
-                        <segue destination="j5N-fv-qgm" kind="relationship" relationship="viewControllers" id="dIj-eH-fJ1"/>
+                        <segue destination="uJG-ak-LaN" kind="relationship" relationship="viewControllers" id="QDa-Wz-exn"/>
+                        <segue destination="tLO-qI-vkr" kind="relationship" relationship="viewControllers" id="dIj-eH-fJ1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Eq-al-zBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-491" y="201"/>
         </scene>
-        <!--Table View Controller - Friends-->
+        <!--Table View Controller-->
         <scene sceneID="L0h-er-My2">
             <objects>
                 <tableViewController id="8vx-TT-h8I" sceneMemberID="viewController">
@@ -34,7 +34,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="2rZ-xR-dJR">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2rZ-xR-dJR" id="ndF-VC-HEm">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -47,11 +47,11 @@
                             <outlet property="delegate" destination="8vx-TT-h8I" id="prY-ig-Yc8"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Friends" image="friends.png" id="nT3-VY-rAt"/>
+                    <navigationItem key="navigationItem" id="Znc-KD-d94"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="876-Zk-Odn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34" y="201"/>
+            <point key="canvasLocation" x="560" y="201"/>
         </scene>
         <!--Inbox View Controller - Ribbit Inbox-->
         <scene sceneID="CAd-x5-bTn">
@@ -144,7 +144,7 @@
             </objects>
             <point key="canvasLocation" x="988" y="-499"/>
         </scene>
-        <!--Table View Controller - Camera-->
+        <!--Table View Controller-->
         <scene sceneID="elz-yZ-eMV">
             <objects>
                 <tableViewController id="j5N-fv-qgm" sceneMemberID="viewController">
@@ -154,7 +154,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="USW-B0-bG9">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="USW-B0-bG9" id="XDs-ks-ljt">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -167,11 +167,11 @@
                             <outlet property="delegate" destination="j5N-fv-qgm" id="VRG-8m-eei"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Camera" image="camera.png" id="YNY-g7-uYW"/>
+                    <navigationItem key="navigationItem" id="ye7-Qk-XXh"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6l-Vm-vbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34" y="915"/>
+            <point key="canvasLocation" x="560" y="915"/>
         </scene>
         <!--View Controller - Ribbit Sign Up-->
         <scene sceneID="A8J-ur-N1v">
@@ -238,6 +238,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmF-yM-ikN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="34" y="-499"/>
+        </scene>
+        <!--Navigation Controller - Friends-->
+        <scene sceneID="t0A-LP-Rfe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uJG-ak-LaN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Friends" image="friends.png" id="nT3-VY-rAt"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sOk-S2-OXw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8vx-TT-h8I" kind="relationship" relationship="rootViewController" id="eL8-uf-uTW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zpt-G1-Hz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34" y="201"/>
+        </scene>
+        <!--Navigation Controller - Camera-->
+        <scene sceneID="VVf-kv-9l9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tLO-qI-vkr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera.png" id="YNY-g7-uYW"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G7b-aJ-KCT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="j5N-fv-qgm" kind="relationship" relationship="rootViewController" id="I48-dz-Vqm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IoF-HC-6JI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34" y="915"/>
         </scene>
     </scenes>
     <resources>
