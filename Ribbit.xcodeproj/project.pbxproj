@@ -26,6 +26,7 @@
 		A31249DC191BB390003D974A /* friends@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A31249D6191BB390003D974A /* friends@2x.png */; };
 		A31249DD191BB390003D974A /* inbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A31249D7191BB390003D974A /* inbox.png */; };
 		A31249DE191BB390003D974A /* inbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A31249D8191BB390003D974A /* inbox@2x.png */; };
+		A31249E5191C70C0003D974A /* InboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31249E4191C70C0003D974A /* InboxViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		A31249D6191BB390003D974A /* friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends@2x.png"; sourceTree = "<group>"; };
 		A31249D7191BB390003D974A /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
 		A31249D8191BB390003D974A /* inbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inbox@2x.png"; sourceTree = "<group>"; };
+		A31249E3191C70C0003D974A /* InboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboxViewController.h; sourceTree = "<group>"; };
+		A31249E4191C70C0003D974A /* InboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				A31249B2191BA907003D974A /* AppDelegate.m */,
 				A31249B4191BA907003D974A /* Images.xcassets */,
 				A31249A9191BA907003D974A /* Supporting Files */,
+				A31249E3191C70C0003D974A /* InboxViewController.h */,
+				A31249E4191C70C0003D974A /* InboxViewController.m */,
 			);
 			path = Ribbit;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			files = (
 				A31249B3191BA907003D974A /* AppDelegate.m in Sources */,
 				A31249AF191BA907003D974A /* main.m in Sources */,
+				A31249E5191C70C0003D974A /* InboxViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
