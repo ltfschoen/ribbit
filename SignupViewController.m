@@ -41,7 +41,7 @@
     // check all fields set (no blank data) or give users error message
     if ([username length] == 0 || [password length] == 0 || [email length] ==0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
-                                  message:@"Please enter values in all fields"
+                                  message:@"Please enter values for username, password, and email fields"
                                   delegate:nil
                                   cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
