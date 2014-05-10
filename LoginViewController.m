@@ -8,20 +8,13 @@
 
 #import "LoginViewController.h"
 
+#import <Parse/Parse.h>
+
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -32,21 +25,36 @@
     NSLog(@"%@", test);
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)login:(id)sender {
+    
+    NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *password = [self.passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if ([username length] == 0 || [password length] == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!"
+                                                            message:@"Please enter values for username and password fields"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        // show alert
+        [alertView show];
+    } else {
+        // asynchronous back-end transaction to Parse.com by calling login method
+        // 'logInWith..' is a Class method so not need instance variable of an Object
+        [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
+            // run the following when back-end transaction complete and response routed
+            // into this block to be handled as successful creation or error
+            // check if error variable is set to null (perceived as false/NO)
+            if (error) {
+                // handle error using UIAlertView
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error attempting to login!" message:[error.userInfo objectForKey:@"Error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    
+                [alertView show];
+            } else {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
+        }];
+    }
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

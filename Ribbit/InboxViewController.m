@@ -22,7 +22,14 @@
 {
     [super viewDidLoad];
     
-    [self performSegueWithIdentifier:@"showLogin" sender:self];
+    // check if user logged in. show login page only when user not logged in
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        NSLog(@"Current User: %@", currentUser.username);
+    } else {
+        [self performSegueWithIdentifier:@"showLogin" sender:self];
+    }
+
 }
 
 #pragma mark - Table view data source

@@ -116,6 +116,9 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="login:" destination="Qkh-tF-eIy" eventType="touchUpInside" id="BaN-cG-KtS"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epM-84-Ora">
                                 <rect key="frame" x="20" y="192" width="183" height="21"/>
@@ -139,6 +142,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ribbit Sign In" id="9fF-Uu-KYK"/>
+                    <connections>
+                        <outlet property="passwordField" destination="zyb-7l-hIt" id="PBZ-TT-ibA"/>
+                        <outlet property="usernameField" destination="cih-BQ-vTD" id="pME-Nt-44I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o4q-K9-Z6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
