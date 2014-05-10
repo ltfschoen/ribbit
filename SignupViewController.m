@@ -8,6 +8,8 @@
 
 #import "SignupViewController.h"
 
+#import <Parse/Parse.h>
+
 @interface SignupViewController ()
 
 @property (strong, nonatomic) IBOutlet UITextField *usernameField;
@@ -45,6 +47,35 @@
                                   otherButtonTitles:nil];
         // show alert
         [alertView show];
+    } else {
+    
+        // create a new user Object with PFUser variable and initializer method
+        // refer to documentation at https://www.parse.com/docs/ios_guide#users/iOS
+        PFUser *newUser = [PFUser user];
+        
+        // set required username and password values of PFUser with values stored above
+        newUser.username = username;
+        newUser.password = password;
+        newUser.email = email;
+        
+        // save data to Parse.com by calling save method
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            // check if error variable is set to null (perceived as false/NO)
+            if (error) {
+                // handle error using UIAlertView
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error creating new user!" message:[error.userInfo objectForKey:@"Error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                
+                [alertView show];
+            } else {
+                // handle successfully created and saved new user by return to inbox
+                // return to previous spot in navigation flow use special methods from
+                // Navigation Controller (InboxViewController embedded inside)
+                // access Navigation Controller (property of ViewController)
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                
+            }
+        }];
     }
+
 }
 @end
