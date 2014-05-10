@@ -40,7 +40,7 @@
         [alertView show];
     } else {
         // asynchronous back-end transaction to Parse.com by calling login method
-        // PFUser is a Class method so not need instance variable of an Object
+        // 'logInWith..' is a Class method so not need instance variable of an Object
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
             // run the following when back-end transaction complete and response routed
             // into this block to be handled as successful creation or error
