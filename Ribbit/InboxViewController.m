@@ -14,6 +14,8 @@
 
 @interface InboxViewController ()
 
+- (IBAction)logout:(id)sender;
+
 @end
 
 @implementation InboxViewController
@@ -48,4 +50,10 @@
     return 0;
 }
 
+- (IBAction)logout:(id)sender {
+    
+    // log out user and take them back to the login page automatically calling login segue
+    [PFUser logOut];
+    [self performSegueWithIdentifier:@"showLogin" sender:self];
+}
 @end

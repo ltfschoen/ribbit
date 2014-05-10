@@ -76,7 +76,13 @@
                             <outlet property="delegate" destination="DE5-Dq-Uct" id="VEh-G6-XSn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Ribbit Inbox" id="JTE-tY-HBk"/>
+                    <navigationItem key="navigationItem" title="Ribbit Inbox" id="JTE-tY-HBk">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="XUE-E1-A7W">
+                            <connections>
+                                <action selector="logout:" destination="DE5-Dq-Uct" id="Eey-ML-BYS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="Qkh-tF-eIy" kind="push" identifier="showLogin" id="shx-RD-4Qm"/>
                     </connections>
