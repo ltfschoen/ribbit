@@ -14,8 +14,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Parse setApplicationId:@"frZXq3ENrhEeSTc4A9nIhXw9yHrOz2wtg7iNaWid"
-                  clientKey:@"2GKMWbijSndsnNFjB4h94Hp3WMjgiW4lt1kDElkK"];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Keys" ofType:@"plist"]];
+    NSString *applicationId = [dictionary objectForKey:@"parseApplicationId"];
+    NSString *clientKey = [dictionary objectForKey:@"parseClientKey"];
+    //add your parse keys here
+    [Parse setApplicationId:applicationId
+                  clientKey:clientKey];
     
     return YES;
 }

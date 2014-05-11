@@ -71,6 +71,14 @@
     // get username property for the label
     cell.textLabel.text = user.username;
     
+    // show checkmark if isFriend helper method returns true otherwise clear checkmark
+    if ([self isFriend:user]) {
+        // if helper method returns true
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
 
@@ -113,6 +121,21 @@
     
 }
 
+#pragma mark - Helper methods
+
+// called each time cell called in table view. loop friend list and return true if match
+- (BOOL)isFriend:(PFUser *)user {
+    for (PFUser *friend in self.friends) {
+        // compare objectID string of each User with the objectID string of User passed in
+        // unique ObjectIDs are created by Parse.com automatically for each Object stored
+        if ([friend.objectId isEqualToString:user.objectId]) {
+            // match found
+            return YES;
+        }
+    }
+    // no match
+    return NO;
+}
 
 
 @end

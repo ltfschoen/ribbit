@@ -40,6 +40,8 @@
 		A31249FC191CCA65003D974A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31249FB191CCA65003D974A /* LoginViewController.m */; };
 		A31249FF191CCA80003D974A /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31249FE191CCA80003D974A /* SignupViewController.m */; };
 		A3124A05191F43C5003D974A /* EditFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3124A04191F43C5003D974A /* EditFriendsViewController.m */; };
+		A3124A08191FA76C003D974A /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3124A07191FA76C003D974A /* FriendsViewController.m */; };
+		A3124A0A19203B30003D974A /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3124A0919203B30003D974A /* Keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,9 @@
 		A31249FE191CCA80003D974A /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ../SignupViewController.m; sourceTree = "<group>"; };
 		A3124A03191F43C5003D974A /* EditFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFriendsViewController.h; sourceTree = "<group>"; };
 		A3124A04191F43C5003D974A /* EditFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFriendsViewController.m; sourceTree = "<group>"; };
+		A3124A06191FA76C003D974A /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		A3124A07191FA76C003D974A /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		A3124A0919203B30003D974A /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +182,7 @@
 			children = (
 				A31249B1191BA907003D974A /* AppDelegate.h */,
 				A31249B2191BA907003D974A /* AppDelegate.m */,
+				A3124A0919203B30003D974A /* Keys.plist */,
 				A31249B4191BA907003D974A /* Images.xcassets */,
 				A31249A9191BA907003D974A /* Supporting Files */,
 				A31249E3191C70C0003D974A /* InboxViewController.h */,
@@ -187,6 +193,8 @@
 				A31249FB191CCA65003D974A /* LoginViewController.m */,
 				A3124A03191F43C5003D974A /* EditFriendsViewController.h */,
 				A3124A04191F43C5003D974A /* EditFriendsViewController.m */,
+				A3124A06191FA76C003D974A /* FriendsViewController.h */,
+				A3124A07191FA76C003D974A /* FriendsViewController.m */,
 			);
 			path = Ribbit;
 			sourceTree = "<group>";
@@ -312,6 +320,7 @@
 				A31249DB191BB390003D974A /* friends.png in Resources */,
 				A31249DC191BB390003D974A /* friends@2x.png in Resources */,
 				A31249DA191BB390003D974A /* camera@2x.png in Resources */,
+				A3124A0A19203B30003D974A /* Keys.plist in Resources */,
 				A31249DD191BB390003D974A /* inbox.png in Resources */,
 				A31249AD191BA907003D974A /* InfoPlist.strings in Resources */,
 				A31249D9191BB390003D974A /* camera.png in Resources */,
@@ -337,6 +346,7 @@
 			files = (
 				A31249FC191CCA65003D974A /* LoginViewController.m in Sources */,
 				A31249B3191BA907003D974A /* AppDelegate.m in Sources */,
+				A3124A08191FA76C003D974A /* FriendsViewController.m in Sources */,
 				A31249AF191BA907003D974A /* main.m in Sources */,
 				A31249E5191C70C0003D974A /* InboxViewController.m in Sources */,
 				A3124A05191F43C5003D974A /* EditFriendsViewController.m in Sources */,
