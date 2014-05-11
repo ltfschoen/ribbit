@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+// only need import file in header (not duplicate in .m)
+#import <Parse/Parse.h>
+
 @interface EditFriendsViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *allUsers;
+
+@property (nonatomic, strong) PFUser *currentUser;
 
 @end

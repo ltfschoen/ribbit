@@ -8,8 +8,6 @@
 
 #import "EditFriendsViewController.h"
 
-#import <Parse/Parse.h>
-
 @interface EditFriendsViewController ()
 
 @end
@@ -39,6 +37,9 @@
             //NSLog(@"%@", self.allUsers);
         }
     }];
+    
+    // set the currentUser @property. get currentUser using the 'currentUser' method of the PFUser Class
+    self.currentUser = [PFUser currentUser];
     
 }
 
@@ -73,15 +74,42 @@
     return cell;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *) indexPath
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // add or delete selected user
+    // indicator that user added or deleted
+    // use special property of UITableViewCell Class called 'accessory type' for indicator
+    // set value to display icon on right side of cell
+    // system configuration of table views in
+    // Table View Programming Guide for iOS
+    // https://developer.apple.com/library/ios/documentation/userexperience/conceptual/tableview_iphone/TableViewStyles/TableViewCharacteristics.html#//apple_ref/doc/uid/TP40007451-CH3-SW1
+    // try Selection List checkmark indicate friendship
+    
+    // add user in front-end with reference to table view cell to show checkmark using indexPath parameter of this method
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    // define new PFRelation with reference to currentUser @property in header file of type PFUser
+    // relation for given key is created if not already exist, otherwise the relation is returned
+    PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
+
+    // retrieve tapped on User with objectAtIndex method
+    PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
+    // added object is the User who was tapped on
+    [friendsRelation addObject:user];
+    
+    // save data to Back-End using asynchronous block method
+    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@ %@", error, [error userInfo]);
+        }
+    }];
+    
 }
-*/
+
+
 
 @end
