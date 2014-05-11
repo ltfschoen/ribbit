@@ -79,6 +79,9 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *) indexPath
 {
+    // manually deselect the row of the TableViewCell (as the blue coloured highlight backgorund which appears when tap a row does not disappear automatically)
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
     // add or delete selected user
     // indicator that user added or deleted
     // use special property of UITableViewCell Class called 'accessory type' for indicator
