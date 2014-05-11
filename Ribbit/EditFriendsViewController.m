@@ -30,7 +30,7 @@
            
             
         } else {
-            // store array of returned PFObjects into "allUsers" @property to use as data source for TableView
+            // store array of returned PFUser (subclass of PFObject) into "allUsers" @property to use as data source for TableView
             self.allUsers = objects;
             NSLog(@"%@", self.allUsers);
         }
@@ -50,9 +50,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    // set number of rows to the number of users in the allUsers array
+    return [self.allUsers count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    return cell;
 }
 
 /*
