@@ -32,7 +32,11 @@
         } else {
             // store array of returned PFUser (subclass of PFObject) into "allUsers" @property to use as data source for TableView
             self.allUsers = objects;
-            NSLog(@"%@", self.allUsers);
+            
+            // send message to TableView that new data has been obtained asychronously
+            [self.tableView reloadData];
+            
+            //NSLog(@"%@", self.allUsers);
         }
     }];
     
@@ -59,6 +63,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    // set text of cell as the username
+    // get PFUser from allUsers using indexPath.row as the index
+    PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
+    
+    // get username property for the label
+    cell.textLabel.text = user.username;
     
     return cell;
 }
