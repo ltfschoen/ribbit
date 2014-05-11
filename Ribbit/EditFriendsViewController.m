@@ -8,8 +8,6 @@
 
 #import "EditFriendsViewController.h"
 
-#import <Parse/Parse.h>
-
 @interface EditFriendsViewController ()
 
 @end
@@ -30,11 +28,18 @@
            
             
         } else {
-            // store array of returned PFObjects into "allUsers" @property to use as data source for TableView
+            // store array of returned PFUser (subclass of PFObject) into "allUsers" @property to use as data source for TableView
             self.allUsers = objects;
-            NSLog(@"%@", self.allUsers);
+            
+            // send message to TableView that new data has been obtained asychronously
+            [self.tableView reloadData];
+            
+            //NSLog(@"%@", self.allUsers);
         }
     }];
+    
+    // set the currentUser @property. get currentUser using the 'currentUser' method of the PFUser Class
+    self.currentUser = [PFUser currentUser];
     
 }
 
@@ -50,20 +55,64 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    // set number of rows to the number of users in the allUsers array
+    return [self.allUsers count];
 }
 
-/*
-#pragma mark - Navigation
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    // set text of cell as the username
+    // get PFUser from allUsers using indexPath.row as the index
+    PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
+    
+    // get username property for the label
+    cell.textLabel.text = user.username;
+    
+    return cell;
+}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *) indexPath
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // manually deselect the row of the TableViewCell (as the blue coloured highlight backgorund which appears when tap a row does not disappear automatically)
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    // add or delete selected user
+    // indicator that user added or deleted
+    // use special property of UITableViewCell Class called 'accessory type' for indicator
+    // set value to display icon on right side of cell
+    // system configuration of table views in
+    // Table View Programming Guide for iOS
+    // https://developer.apple.com/library/ios/documentation/userexperience/conceptual/tableview_iphone/TableViewStyles/TableViewCharacteristics.html#//apple_ref/doc/uid/TP40007451-CH3-SW1
+    // try Selection List checkmark indicate friendship
+    
+    // add user in front-end with reference to table view cell to show checkmark using indexPath parameter of this method
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    // define new PFRelation with reference to currentUser @property in header file of type PFUser
+    // relation for given key is created if not already exist, otherwise the relation is returned
+    PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
+
+    // retrieve tapped on User with objectAtIndex method
+    PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
+    // added object is the User who was tapped on
+    [friendsRelation addObject:user];
+    
+    // save data to Back-End using asynchronous block method
+    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@ %@", error, [error userInfo]);
+        }
+    }];
+    
 }
-*/
+
+
 
 @end
