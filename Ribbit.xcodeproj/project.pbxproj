@@ -39,6 +39,7 @@
 		A31249F9191CBD2E003D974A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31249F0191CBD2E003D974A /* SystemConfiguration.framework */; };
 		A31249FC191CCA65003D974A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31249FB191CCA65003D974A /* LoginViewController.m */; };
 		A31249FF191CCA80003D974A /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31249FE191CCA80003D974A /* SignupViewController.m */; };
+		A3124A05191F43C5003D974A /* EditFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3124A04191F43C5003D974A /* EditFriendsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		A31249FB191CCA65003D974A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		A31249FD191CCA80003D974A /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = ../SignupViewController.h; sourceTree = "<group>"; };
 		A31249FE191CCA80003D974A /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = ../SignupViewController.m; sourceTree = "<group>"; };
+		A3124A03191F43C5003D974A /* EditFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFriendsViewController.h; sourceTree = "<group>"; };
+		A3124A04191F43C5003D974A /* EditFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFriendsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 				A31249FE191CCA80003D974A /* SignupViewController.m */,
 				A31249FA191CCA65003D974A /* LoginViewController.h */,
 				A31249FB191CCA65003D974A /* LoginViewController.m */,
+				A3124A03191F43C5003D974A /* EditFriendsViewController.h */,
+				A3124A04191F43C5003D974A /* EditFriendsViewController.m */,
 			);
 			path = Ribbit;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				A31249B3191BA907003D974A /* AppDelegate.m in Sources */,
 				A31249AF191BA907003D974A /* main.m in Sources */,
 				A31249E5191C70C0003D974A /* InboxViewController.m in Sources */,
+				A3124A05191F43C5003D974A /* EditFriendsViewController.m in Sources */,
 				A31249FF191CCA80003D974A /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

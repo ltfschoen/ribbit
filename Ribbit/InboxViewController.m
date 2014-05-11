@@ -14,6 +14,8 @@
 
 @interface InboxViewController ()
 
+- (IBAction)logout:(id)sender;
+
 @end
 
 @implementation InboxViewController
@@ -46,6 +48,20 @@
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 0;
+}
+
+- (IBAction)logout:(id)sender {
+    
+    // log out user and take them back to the login page automatically calling login segue
+    [PFUser logOut];
+    [self performSegueWithIdentifier:@"showLogin" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // check identifer of segue incase there is more than one in view controller
+    if ([segue.identifier isEqualToString:@"showLogin"]) {
+        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+    }
 }
 
 @end

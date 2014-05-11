@@ -21,8 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSString *test = @"test";
-    NSLog(@"%@", test);
+    // hide the back button in login screen (setup by default when added nav controller)
+    self.navigationItem.hidesBackButton = YES;
 }
 
 - (IBAction)login:(id)sender {

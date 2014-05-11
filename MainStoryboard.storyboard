@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-491" y="201"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Table View Controller - Friends-->
         <scene sceneID="L0h-er-My2">
             <objects>
                 <tableViewController id="8vx-TT-h8I" sceneMemberID="viewController">
@@ -47,11 +47,46 @@
                             <outlet property="delegate" destination="8vx-TT-h8I" id="prY-ig-Yc8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Znc-KD-d94"/>
+                    <navigationItem key="navigationItem" title="Friends" id="Znc-KD-d94">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="ORK-WF-3o8">
+                            <connections>
+                                <segue destination="Mox-2v-WZh" kind="push" id="CIP-jq-PaZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="876-Zk-Odn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="560" y="201"/>
+        </scene>
+        <!--Edit Friends View Controller - Edit Friends-->
+        <scene sceneID="USq-nL-uyX">
+            <objects>
+                <tableViewController id="Mox-2v-WZh" customClass="EditFriendsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="n7e-yd-o5f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Bwt-rA-Mh4">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bwt-rA-Mh4" id="wbU-fj-Nc2">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Mox-2v-WZh" id="GIY-Y2-n0C"/>
+                            <outlet property="delegate" destination="Mox-2v-WZh" id="Nrx-Eh-Zkx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edit Friends" id="1Wd-ZK-207"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Rt-F5-6dY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="988" y="201"/>
         </scene>
         <!--Inbox View Controller - Ribbit Inbox-->
         <scene sceneID="CAd-x5-bTn">
@@ -76,7 +111,13 @@
                             <outlet property="delegate" destination="DE5-Dq-Uct" id="VEh-G6-XSn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Ribbit Inbox" id="JTE-tY-HBk"/>
+                    <navigationItem key="navigationItem" title="Ribbit Inbox" id="JTE-tY-HBk">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="XUE-E1-A7W">
+                            <connections>
+                                <action selector="logout:" destination="DE5-Dq-Uct" id="Eey-ML-BYS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="Qkh-tF-eIy" kind="push" identifier="showLogin" id="shx-RD-4Qm"/>
                     </connections>
