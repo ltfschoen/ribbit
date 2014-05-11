@@ -8,6 +8,8 @@
 
 #import "FriendsViewController.h"
 
+#import "EditFriendsViewController.h"
+
 @interface FriendsViewController ()
 
 @end
@@ -42,6 +44,22 @@
         }
     }];
     
+}
+
+#pragma mark - View controller methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // always check identifier for the segue incase conflict in future causes code to break
+    // click Segue in Storyboard and add identifier 'showEditFriends'
+    if ([segue.identifier isEqualToString:@"showEditFriends"]) {
+        // get destination view controller from the segue parameter
+        // important to explicitly to declare casts so not return a generic view controller
+        // i.e. (EditFriendsViewController *)
+        EditFriendsViewController *viewController = (EditFriendsViewController *)segue.destinationViewController;
+        // set 'friend' (mutable array) property of view controller variable with the friends list that we have already retrieved in this view controller
+        // creates a mutable array (property of EditFriends) out of our array called 'friends' (property of Friends)
+        viewController.friends = [NSMutableArray arrayWithArray:self.friends];
+    }
 }
 
 #pragma mark - Table view data source
