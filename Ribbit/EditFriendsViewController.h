@@ -10,4 +10,6 @@
 
 @interface EditFriendsViewController : UITableViewController
 
+@property (nonatomic, strong) NSArray *allUsers;
+
 @end

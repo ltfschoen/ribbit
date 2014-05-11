@@ -8,6 +8,8 @@
 
 #import "EditFriendsViewController.h"
 
+#import <Parse/Parse.h>
+
 @interface EditFriendsViewController ()
 
 @end
@@ -17,6 +19,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // queries all users by default
+    PFQuery *query = [PFUser query];
+    [query orderByAscending:@"username"];
+    // successful query returns an array of PFObjects
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+           
+            
+        } else {
+            // store array of returned PFObjects into "allUsers" @property to use as data source for TableView
+            self.allUsers = objects;
+            NSLog(@"%@", self.allUsers);
+        }
+    }];
     
 }
 
