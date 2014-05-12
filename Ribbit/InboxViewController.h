@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+// <> - search certain preset system paths (i.e. frameworks)
+#import <Parse/Parse.h>
+
 @interface InboxViewController : UITableViewController
+
+- (IBAction)logout:(id)sender;
 
 @end
