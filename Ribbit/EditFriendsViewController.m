@@ -103,21 +103,59 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
-    // define new PFRelation with reference to currentUser @property in header file of type PFUser
-    // relation for given key is created if not already exist, otherwise the relation is returned
-    PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
-
-    // retrieve tapped on User with objectAtIndex method
     PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
-    // added object is the User who was tapped on
-    [friendsRelation addObject:user];
     
-    // save data to Back-End using asynchronous block method
-    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error) {
-            NSLog(@"Error %@ %@", error, [error userInfo]);
+    // comparator to add or remove friendship depending on whether the user tapped is a friend or not
+    if ([self isFriend:user]) {
+        // remove friendship
+        
+        // 1. remove checkmark
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        // 2. remove from array of friends if user is already a matching friend.
+        // cannot use array method 'containsObject' as it checks object equality at every point. but because of how PFRelations are stored they are different each time we retrieve them
+        for (PFUser *friend in self.friends) {
+            if ([friend.objectId isEqualToString:user.objectId]) {
+                // remove user from mutable array
+                [self.friends removeObject:friend];
+                // no need to continue processing remaining users so break
+                break;
+            }
         }
-    }];
+        
+        // 3. remove from back-end
+        // note that friends are stored in PFRelation object called FriendRelation
+        PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
+        PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
+        [friendsRelation removeObject:user];
+        
+        // save data to Back-End using asynchronous block method
+        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error) {
+                NSLog(@"Error %@ %@", error, [error userInfo]);
+            }
+        }];
+    } else {
+        // add friendship
+        
+        // define new PFRelation with reference to currentUser @property in header file of type PFUser
+        // relation for given key is created if not already exist, otherwise the relation is returned
+        PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
+        
+        // retrieve tapped on User with objectAtIndex method
+        PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
+        // added object is the User who was tapped on
+        [friendsRelation addObject:user];
+        
+        // save data to Back-End using asynchronous block method
+        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error) {
+                NSLog(@"Error %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
+    
+
     
 }
 
