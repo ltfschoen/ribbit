@@ -17,6 +17,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.imagePicker = [[UIImagePickerController alloc] init];
+    
+    // tell imagePicker that CameraViewController is its delegate
+    self.imagePicker.delegate = self;
     
 }
 
