@@ -40,7 +40,6 @@
             self.friends = objects;
             
             [self.tableView reloadData];
-            
         }
     }];
     
@@ -88,7 +87,5 @@
     
     return cell;
 }
-
-
 
 @end

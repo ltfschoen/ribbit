@@ -9,12 +9,7 @@
 // "" - search in current project for header file (i.e. project directory code)
 #import "InboxViewController.h"
 
-// <> - search certain preset system paths (i.e. frameworks)
-#import <Parse/Parse.h>
-
 @interface InboxViewController ()
-
-- (IBAction)logout:(id)sender;
 
 @end
 

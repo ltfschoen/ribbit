@@ -42,6 +42,7 @@
 		A3124A05191F43C5003D974A /* EditFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3124A04191F43C5003D974A /* EditFriendsViewController.m */; };
 		A3124A08191FA76C003D974A /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3124A07191FA76C003D974A /* FriendsViewController.m */; };
 		A3124A0C19204C97003D974A /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3124A0B19204C97003D974A /* Keys.plist */; };
+		A349F5BF192A17CB00D8BBCA /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A349F5BE192A17CB00D8BBCA /* CameraViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		A3124A06191FA76C003D974A /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		A3124A07191FA76C003D974A /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		A3124A0B19204C97003D974A /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		A349F5BD192A17CB00D8BBCA /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		A349F5BE192A17CB00D8BBCA /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,8 @@
 				A3124A06191FA76C003D974A /* FriendsViewController.h */,
 				A3124A07191FA76C003D974A /* FriendsViewController.m */,
 				A3124A0B19204C97003D974A /* Keys.plist */,
+				A349F5BD192A17CB00D8BBCA /* CameraViewController.h */,
+				A349F5BE192A17CB00D8BBCA /* CameraViewController.m */,
 			);
 			path = Ribbit;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31249FC191CCA65003D974A /* LoginViewController.m in Sources */,
+				A349F5BF192A17CB00D8BBCA /* CameraViewController.m in Sources */,
 				A31249B3191BA907003D974A /* AppDelegate.m in Sources */,
 				A3124A08191FA76C003D974A /* FriendsViewController.m in Sources */,
 				A31249AF191BA907003D974A /* main.m in Sources */,

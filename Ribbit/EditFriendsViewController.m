@@ -25,8 +25,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
-           
-            
         } else {
             // store array of returned PFUser (subclass of PFObject) into "allUsers" @property to use as data source for TableView
             self.allUsers = objects;
@@ -40,7 +38,6 @@
     
     // set the currentUser @property. get currentUser using the 'currentUser' method of the PFUser Class
     self.currentUser = [PFUser currentUser];
-    
 }
 
 #pragma mark - Table view data source
@@ -85,7 +82,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *) indexPath
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // manually deselect the row of the TableViewCell (as the blue coloured highlight backgorund which appears when tap a row does not disappear automatically)
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -101,8 +98,13 @@
     
     // add user in front-end with reference to table view cell to show checkmark using indexPath parameter of this method
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
+    // define new PFRelation with reference to currentUser @property in header file of type PFUser
+    // relation for given key is created if not already exist, otherwise the relation is returned
+    // note that friends are stored in PFRelation object called FriendRelation
+    PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
+    
+    // retrieve tapped on User with objectAtIndex method
     PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
     
     // comparator to add or remove friendship depending on whether the user tapped is a friend or not
@@ -124,38 +126,28 @@
         }
         
         // 3. remove from back-end
-        // note that friends are stored in PFRelation object called FriendRelation
-        PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
-        PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
         [friendsRelation removeObject:user];
-        
-        // save data to Back-End using asynchronous block method
-        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (error) {
-                NSLog(@"Error %@ %@", error, [error userInfo]);
-            }
-        }];
+
     } else {
         // add friendship
         
-        // define new PFRelation with reference to currentUser @property in header file of type PFUser
-        // relation for given key is created if not already exist, otherwise the relation is returned
-        PFRelation *friendsRelation = [self.currentUser relationForKey:@"friendsRelation"];
+        // 1. set checkmark
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
-        // retrieve tapped on User with objectAtIndex method
-        PFUser *user = [self.allUsers objectAtIndex:indexPath.row];
-        // added object is the User who was tapped on
+        // 2. add user object to mutable array list of friends
+        [self.friends addObject:user];
+        
+        // 3. added object to friendsRelation is the User who was tapped on
         [friendsRelation addObject:user];
         
-        // save data to Back-End using asynchronous block method
-        [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (error) {
-                NSLog(@"Error %@ %@", error, [error userInfo]);
-            }
-        }];
     }
     
-
+    // save data to Back-End using asynchronous block method
+    [self.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@ %@", error, [error userInfo]);
+        }
+    }];
     
 }
 
@@ -174,6 +166,5 @@
     // no match
     return NO;
 }
-
 
 @end
