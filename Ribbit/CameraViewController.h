@@ -12,4 +12,9 @@
 
 @property (nonatomic, strong) UIImagePickerController *imagePicker;
 
+// property to store image for use throughout the rest of the view controller
+@property (nonatomic, strong) UIImage *image;
+
+@property (nonatomic, strong) NSString *videoFilePath;
+
 @end
