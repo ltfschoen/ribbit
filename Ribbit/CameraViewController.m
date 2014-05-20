@@ -18,6 +18,11 @@
 {
     [super viewDidLoad];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     #pragma mark - Setup camera
     
     self.imagePicker = [[UIImagePickerController alloc] init];
@@ -42,7 +47,6 @@
     #pragma mark - Present camera modally
     
     [self presentViewController:self.imagePicker animated:NO completion:nil];
-    
 }
 
 #pragma mark - Table view data source
