@@ -76,4 +76,16 @@
     
 }
 
+#pragma mark - Image Picker Controller delegate
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    // dismiss view controller presented modally
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    // return user back to the inbox tab
+    // select inbox tab index array from TabBarController using setSelectedIndex
+    [self.tabBarController setSelectedIndex:0];
+}
+
 @end
