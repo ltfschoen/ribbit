@@ -86,6 +86,17 @@
     // store senders username as 'senderName'
     cell.textLabel.text = [message objectForKey:@"senderName"];
     
+    // check the value of the fileType string to determine if the message is a photo or a video
+    // and show appropriate icon
+    NSString *fileType = [message objectForKey:@"fileType"];
+    if ([fileType isEqualToString:@"image"]) {
+        // set imageView cell to image icon
+        // each cell with default styling has optional imageView on left side 'cell.imageView'
+        cell.imageView.image = [UIImage imageNamed:@"icon_image"];
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"icon_video"];
+    }
+    
     return cell;
 }
 
