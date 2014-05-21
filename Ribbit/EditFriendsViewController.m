@@ -82,7 +82,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // manually deselect the row of the TableViewCell (as the blue coloured highlight backgorund which appears when tap a row does not disappear automatically)
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
