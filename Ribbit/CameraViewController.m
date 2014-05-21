@@ -215,9 +215,7 @@
         // helper method
         [self uploadMessage];
         
-        // reset @properties using DRY reuse method
-        // call 'reset' helper method (refactored)
-        [self reset];
+        // shift to after asych upload methods completed successfully to fix blank recipient id's being stored in the database
         
         // return to inbox after upload
         [self.tabBarController setSelectedIndex:0];
@@ -296,6 +294,10 @@
                 } else {
                     // successfully uploaded and returned user to inbox
                     // no action required
+                    
+                    // reset @properties using DRY reuse method
+                    // call 'reset' helper method (refactored)
+                    [self reset];
                 }
             }];
         }
