@@ -24,5 +24,7 @@
 // add friends @property so can reference anywhere in View Controller
 @property (nonatomic, strong) NSArray *friends;
 
+@property (nonatomic, strong) NSMutableArray *recipients;
+
 @end
 

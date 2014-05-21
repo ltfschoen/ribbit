@@ -22,6 +22,7 @@
     [super viewDidLoad];
     
     self.friendsRelation = [[PFUser currentUser] objectForKey:@"friendsRelation"];
+    self.recipients = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -101,7 +102,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    // get current Users index using the indexPath to efficiently refer to user when handling requests with Parse.com
+    PFUser *user = [self.friends objectAtIndex:indexPath.row];
+    
+    // toggle the checkmark
+    if (cell.accessoryType == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.recipients addObject:user.objectId];
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.recipients removeObject:user.objectId];
+    }
+    
+    // print the array of recipients to test
+    NSLog(@"%@", self.recipients);
 }
 
 #pragma mark - Image Picker Controller delegate
