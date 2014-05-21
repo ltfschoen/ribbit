@@ -28,5 +28,14 @@
 
 - (IBAction)cancel:(id)sender;
 
+- (IBAction)send:(id)sender;
+
+// helper instance method for uploading images and videos to Parse.com
+- (void)uploadMessage;
+
+// helper instance method signature for resizing images. addit parameters are width and height
+- (UIImage *)resizeImage:(UIImage *)image toWidth:(float)width andHeight:(float)height;
+
+
 @end
 

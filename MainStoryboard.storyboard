@@ -221,7 +221,11 @@
                                 <action selector="cancel:" destination="j5N-fv-qgm" id="J2N-yX-oXN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Send" id="obh-fe-nk1"/>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="obh-fe-nk1">
+                            <connections>
+                                <action selector="send:" destination="j5N-fv-qgm" id="cjf-6t-XGF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6l-Vm-vbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
