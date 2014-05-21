@@ -48,6 +48,7 @@
 		A349F5C6192CAC1500D8BBCA /* icon_video.png in Resources */ = {isa = PBXBuildFile; fileRef = A349F5C2192CAC1500D8BBCA /* icon_video.png */; };
 		A349F5C7192CAC1500D8BBCA /* icon_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A349F5C3192CAC1500D8BBCA /* icon_video@2x.png */; };
 		A349F5CA192CB53500D8BBCA /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A349F5C9192CB53500D8BBCA /* ImageViewController.m */; };
+		A3E14958192CDB300095B864 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E14957192CDB300095B864 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		A349F5C3192CAC1500D8BBCA /* icon_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_video@2x.png"; sourceTree = "<group>"; };
 		A349F5C8192CB53500D8BBCA /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		A349F5C9192CB53500D8BBCA /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		A3E14957192CDB300095B864 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3E14958192CDB300095B864 /* MediaPlayer.framework in Frameworks */,
 				A31249F1191CBD2E003D974A /* AudioToolbox.framework in Frameworks */,
 				A31249F2191CBD2E003D974A /* CFNetwork.framework in Frameworks */,
 				A31249F3191CBD2E003D974A /* CoreLocation.framework in Frameworks */,
@@ -173,6 +176,7 @@
 		A31249A1191BA907003D974A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3E14957192CDB300095B864 /* MediaPlayer.framework */,
 				A31249E8191CBD2E003D974A /* AudioToolbox.framework */,
 				A31249E9191CBD2E003D974A /* CFNetwork.framework */,
 				A31249A4191BA907003D974A /* CoreGraphics.framework */,

@@ -22,6 +22,8 @@
 {
     [super viewDidLoad];
     
+    self.moviePlayer = [[MPMoviePlayerController alloc] init];
+    
     // check if user logged in. show login page only when user not logged in
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
@@ -122,7 +124,18 @@
         // get image contained in the message displayed to the ImageViewController
         // pass data between view controllers with mechanism of setting @properties in the prepareForSegue method
     } else {
-
+        // video file type situation
+        // specify URL for the video content from PFFile Object
+        // first assocate PFFile with this message
+        PFFile *videoFile = [self.selectedMessage objectForKey:@"file"];
+        NSURL *fileUrl = [NSURL URLWithString:videoFile.url];
+        // set URL for movie player
+        self.moviePlayer.contentURL = fileUrl;
+        [self.moviePlayer prepareToPlay];
+        // add movie player to View Controllers hierarchy so we can view it
+        [self.view addSubview:self.moviePlayer.view];
+        // set to run at full-screen after added view to hierarchy
+        [self.moviePlayer setFullscreen:YES animated:YES];
     }
     
     // if message is a movie then use special control called MPMoviePlayerController to watch it
