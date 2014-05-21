@@ -201,7 +201,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="USW-B0-bG9">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="USW-B0-bG9">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="USW-B0-bG9" id="XDs-ks-ljt">
@@ -215,7 +215,14 @@
                             <outlet property="delegate" destination="j5N-fv-qgm" id="VRG-8m-eei"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recipients" id="ye7-Qk-XXh"/>
+                    <navigationItem key="navigationItem" title="Recipients" id="ye7-Qk-XXh">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="PO2-Jc-7q4">
+                            <connections>
+                                <action selector="cancel:" destination="j5N-fv-qgm" id="J2N-yX-oXN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="obh-fe-nk1"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6l-Vm-vbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

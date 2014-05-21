@@ -25,6 +25,14 @@
 
     self.friendsRelation = [[PFUser currentUser] objectForKey:@"friendsRelation"];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+     #pragma mark - Friends List Query
+    
     // call to back-end to get all data stored in PFRelation using query object
     PFQuery *query = [self.friendsRelation query];
     [query orderByAscending:@"username"];

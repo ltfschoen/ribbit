@@ -21,10 +21,26 @@
 {
     [super viewDidLoad];
     
+    self.friendsRelation = [[PFUser currentUser] objectForKey:@"friendsRelation"];
+    self.recipients = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    #pragma mark - Friends List Query
+    
+    PFQuery *query = [self.friendsRelation query];
+    [query orderByAscending:@"username"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@ %@", error, [error userInfo]);
+        } else {
+            self.friends = objects;
+            [self.tableView reloadData];
+        }
+    }];
     
     #pragma mark - Setup camera
     
@@ -59,21 +75,33 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.friends count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    // simply want to display username of each friend
+    PFUser *user = [self.friends objectAtIndex:indexPath.row];
+    cell.textLabel.text = user.username;
+    
+    
+    
+    // prevent recycling of checkmarks from earlier cells appearing when scrolling
+    // check array of recipients and if user for current row is in the array show the checkmark, ese leave blank
+    if ([self.recipients containsObject:user.objectId]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
@@ -81,9 +109,26 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    // get current Users index using the indexPath to efficiently refer to user when handling requests with Parse.com
+    PFUser *user = [self.friends objectAtIndex:indexPath.row];
+    
+    // toggle the checkmark
+    if (cell.accessoryType == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.recipients addObject:user.objectId];
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.recipients removeObject:user.objectId];
+    }
+    
+    // print the array of recipients to test
+    NSLog(@"%@", self.recipients);
 }
 
 #pragma mark - Image Picker Controller delegate
@@ -135,6 +180,21 @@
     }
     // dismiss modal view controller
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+#pragma mark - IBActions
+
+- (IBAction)cancel:(id)sender {
+    // reset @properties in the header file
+    
+    self.image = nil;
+    self.videoFilePath = nil;
+    [self.recipients removeAllObjects];
+    
+    // return the user to the inbox
+    [self.tabBarController setSelectedIndex:0];
+    
     
 }
 
