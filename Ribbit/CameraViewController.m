@@ -90,9 +90,18 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // simply want to display username of each friend
-    
     PFUser *user = [self.friends objectAtIndex:indexPath.row];
     cell.textLabel.text = user.username;
+    
+    
+    
+    // prevent recycling of checkmarks from earlier cells appearing when scrolling
+    // check array of recipients and if user for current row is in the array show the checkmark, ese leave blank
+    if ([self.recipients containsObject:user.objectId]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
