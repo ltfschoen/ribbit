@@ -43,6 +43,10 @@
 		A3124A08191FA76C003D974A /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3124A07191FA76C003D974A /* FriendsViewController.m */; };
 		A3124A0C19204C97003D974A /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3124A0B19204C97003D974A /* Keys.plist */; };
 		A349F5BF192A17CB00D8BBCA /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A349F5BE192A17CB00D8BBCA /* CameraViewController.m */; };
+		A349F5C4192CAC1500D8BBCA /* icon_image.png in Resources */ = {isa = PBXBuildFile; fileRef = A349F5C0192CAC1500D8BBCA /* icon_image.png */; };
+		A349F5C5192CAC1500D8BBCA /* icon_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A349F5C1192CAC1500D8BBCA /* icon_image@2x.png */; };
+		A349F5C6192CAC1500D8BBCA /* icon_video.png in Resources */ = {isa = PBXBuildFile; fileRef = A349F5C2192CAC1500D8BBCA /* icon_video.png */; };
+		A349F5C7192CAC1500D8BBCA /* icon_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A349F5C3192CAC1500D8BBCA /* icon_video@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +106,10 @@
 		A3124A0B19204C97003D974A /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		A349F5BD192A17CB00D8BBCA /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		A349F5BE192A17CB00D8BBCA /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		A349F5C0192CAC1500D8BBCA /* icon_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_image.png; sourceTree = "<group>"; };
+		A349F5C1192CAC1500D8BBCA /* icon_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image@2x.png"; sourceTree = "<group>"; };
+		A349F5C2192CAC1500D8BBCA /* icon_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_video.png; sourceTree = "<group>"; };
+		A349F5C3192CAC1500D8BBCA /* icon_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_video@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +244,10 @@
 		A31249DF191BB393003D974A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A349F5C0192CAC1500D8BBCA /* icon_image.png */,
+				A349F5C1192CAC1500D8BBCA /* icon_image@2x.png */,
+				A349F5C2192CAC1500D8BBCA /* icon_video.png */,
+				A349F5C3192CAC1500D8BBCA /* icon_video@2x.png */,
 				A31249D3191BB390003D974A /* camera.png */,
 				A31249D4191BB390003D974A /* camera@2x.png */,
 				A31249D5191BB390003D974A /* friends.png */,
@@ -322,14 +334,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31249D2191BA918003D974A /* MainStoryboard.storyboard in Resources */,
+				A349F5C6192CAC1500D8BBCA /* icon_video.png in Resources */,
 				A31249DB191BB390003D974A /* friends.png in Resources */,
 				A31249DC191BB390003D974A /* friends@2x.png in Resources */,
 				A31249DA191BB390003D974A /* camera@2x.png in Resources */,
+				A349F5C7192CAC1500D8BBCA /* icon_video@2x.png in Resources */,
 				A3124A0C19204C97003D974A /* Keys.plist in Resources */,
 				A31249DD191BB390003D974A /* inbox.png in Resources */,
 				A31249AD191BA907003D974A /* InfoPlist.strings in Resources */,
 				A31249D9191BB390003D974A /* camera.png in Resources */,
 				A31249B5191BA907003D974A /* Images.xcassets in Resources */,
+				A349F5C5192CAC1500D8BBCA /* icon_image@2x.png in Resources */,
+				A349F5C4192CAC1500D8BBCA /* icon_image.png in Resources */,
 				A31249DE191BB390003D974A /* inbox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
