@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) NSArray *messages;
 
+@property (nonatomic, strong) PFObject *selectedMessage;
+
 - (IBAction)logout:(id)sender;
 
 @end

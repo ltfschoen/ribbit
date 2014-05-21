@@ -9,6 +9,9 @@
 // "" - search in current project for header file (i.e. project directory code)
 #import "InboxViewController.h"
 
+#import "ImageViewController.h"
+
+
 @interface InboxViewController ()
 
 @end
@@ -104,7 +107,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // when tap message
+    // if message is a picture then view image in new ImageViewController
+    // firstly access the file type
     
+    // updated to use @property to store the selected message
+    self.selectedMessage = [self.messages objectAtIndex:indexPath.row];
+    NSString *fileType = [self.selectedMessage objectForKey:@"fileType"];
+    //PFObject *message = [self.messages objectAtIndex:indexPath.row];
+    //NSString *fileType = [message objectForKey:@"fileType"];
+    if ([fileType isEqualToString:@"image"]) {
+        // perform Segue in Storyboard with identifier 'showImage'
+        [self performSegueWithIdentifier:@"showImage" sender:self];
+        // get image contained in the message displayed to the ImageViewController
+        // pass data between view controllers with mechanism of setting @properties in the prepareForSegue method
+    } else {
+
+    }
+    
+    // if message is a movie then use special control called MPMoviePlayerController to watch it
 }
 
 #pragma mark - IBActions
@@ -120,6 +141,18 @@
     // check identifer of segue incase there is more than one in view controller
     if ([segue.identifier isEqualToString:@"showLogin"]) {
         [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+    } else if ([segue.identifier isEqualToString:@"showImage"]) {
+        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+        
+        // access properties of 'destinationViewController' variable
+        // after firstly casting it to the appropriate type
+        // declare new ImageViewController variable (after #importing it)
+        ImageViewController *imageViewController = (ImageViewController *)segue.destinationViewController;
+        // now can access properties of imageViewController variable
+        // store message that was selected into a new @property defined in header 'selectedMessage'
+        // and set it in didSelectRowAtIndexPath when the message was selected
+        // now set the message property to the stored @property 'selectedMessage'
+        imageViewController.message = self.selectedMessage;
     }
 }
 
