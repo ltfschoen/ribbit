@@ -26,5 +26,7 @@
 
 @property (nonatomic, strong) NSMutableArray *recipients;
 
+- (IBAction)cancel:(id)sender;
+
 @end
 
