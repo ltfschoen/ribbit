@@ -132,6 +132,9 @@
         // set URL for movie player
         self.moviePlayer.contentURL = fileUrl;
         [self.moviePlayer prepareToPlay];
+        // thumbnail to appear before video starts
+        // start immediately, grab the thumbnail exactly at time specified not required so set to start at nearest keyframe which is better for performance purposes
+        [self.moviePlayer thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
         // add movie player to View Controllers hierarchy so we can view it
         [self.view addSubview:self.moviePlayer.view];
         // set to run at full-screen after added view to hierarchy
