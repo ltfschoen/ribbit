@@ -141,7 +141,31 @@
         [self.moviePlayer setFullscreen:YES animated:YES];
     }
     
-    // if message is a movie then use special control called MPMoviePlayerController to watch it
+    // process to delete message and file from back-end after all recipients have read them
+    // first check the recipients.
+    // noting that the message Object that we're dealing with corresponds to the message for the row that we're on (which is already stored in the 'selectedMessage' variable
+    // the key 'recipientIds' is storing an array of the recipients in the message database class/table
+    // get array and store in a mutable array that we'll be deleting from
+    NSMutableArray *recipientIds = [NSMutableArray arrayWithArray:[self.selectedMessage objectForKey:@"recipientIds"]];
+    // log to watch recipients being deleted
+    NSLog(@"Recipients: %@", recipientIds);
+    
+    if ([recipientIds count] == 1) {
+        // last recipient delete
+        // call delete method on the PFObject object
+        [self.selectedMessage deleteInBackground];
+    } else {
+        // remove recipient locally and save it. 'removeObject' method searches array for the object that is passed in and removes it if found. note that the ids are strings
+        [recipientIds removeObject:[[PFUser currentUser] objectId]];
+        
+        // let the back-end know that we made this change
+        // update the recipients array in our selectedMessage PFObject
+        // then call one of its save methods to save in the back-end
+        [self.selectedMessage setObject:recipientIds forKey:@"recipientIds"];
+        [self.selectedMessage saveInBackground];
+        // we have deleted the PFObjects (that reference the PFFiles), but not delete the files themselves on the Parse.com servers
+    }
+    
 }
 
 #pragma mark - IBActions
