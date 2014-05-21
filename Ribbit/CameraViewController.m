@@ -42,33 +42,37 @@
         }
     }];
     
-    #pragma mark - Setup camera
+    // check
+    if (self.image == nil && [self.videoFilePath length] == 0) {
     
-    self.imagePicker = [[UIImagePickerController alloc] init];
-    
-    // tell imagePicker that CameraViewController is its delegate
-    self.imagePicker.delegate = self;
-    
-    // requires memory management
-    self.imagePicker.allowsEditing = NO;
-    
-    // set maximum duration of videos
-    self.imagePicker.videoMaximumDuration = 10; // 10 seconds
-    
-    // convenience method to check if camera is available
-    // otherwise setting source type to camera does not work with simulator
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    } else {
-        self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        #pragma mark - Setup camera
+        
+        self.imagePicker = [[UIImagePickerController alloc] init];
+        
+        // tell imagePicker that CameraViewController is its delegate
+        self.imagePicker.delegate = self;
+        
+        // requires memory management
+        self.imagePicker.allowsEditing = NO;
+        
+        // set maximum duration of videos
+        self.imagePicker.videoMaximumDuration = 10; // 10 seconds
+        
+        // convenience method to check if camera is available
+        // otherwise setting source type to camera does not work with simulator
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        } else {
+            self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        
+        // use source type just set
+        self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
+        
+        #pragma mark - Present camera modally
+        
+        [self presentViewController:self.imagePicker animated:NO completion:nil];
     }
-    
-    // use source type just set
-    self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
-    
-    #pragma mark - Present camera modally
-    
-    [self presentViewController:self.imagePicker animated:NO completion:nil];
 }
 
 #pragma mark - Table view data source
