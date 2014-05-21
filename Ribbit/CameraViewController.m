@@ -37,7 +37,9 @@
         if (error) {
             NSLog(@"Error %@ %@", error, [error userInfo]);
         } else {
+            // set the 'friends' @property to the array returned in this block
             self.friends = objects;
+            // reload the table view
             [self.tableView reloadData];
         }
     }];

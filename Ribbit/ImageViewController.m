@@ -39,4 +39,27 @@
     self.navigationItem.title = title;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // check if timeout selector exists before we actually try to use the timer
+    // using special method respondsToSelector which inherits from NSObject to check if receiver can handle the request before we call the selector (i.e. in case we did not write the 'timeout' method this will crash
+    if ([self respondsToSelector:@selector(timeout)]) {
+    
+        // iOS includes timer object
+        // navigate back to inbox after 10s
+        [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+        
+    } else {
+        NSLog(@"Error: selector missing");
+    }
+}
+
+#pragma mark - Helper methods
+
+- (void)timeout {
+    // return the user to the inbox
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end
