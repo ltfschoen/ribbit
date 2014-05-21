@@ -186,6 +186,15 @@
 #pragma mark - IBActions
 
 - (IBAction)cancel:(id)sender {
+    // reset @properties in the header file
+    
+    self.image = nil;
+    self.videoFilePath = nil;
+    [self.recipients removeAllObjects];
+    
+    // return the user to the inbox
+    [self.tabBarController setSelectedIndex:0];
+    
     
 }
 
