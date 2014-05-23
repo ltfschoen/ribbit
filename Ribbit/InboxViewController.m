@@ -9,6 +9,9 @@
 // "" - search in current project for header file (i.e. project directory code)
 #import "InboxViewController.h"
 
+#import "ImageViewController.h"
+
+
 @interface InboxViewController ()
 
 @end
@@ -18,6 +21,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.moviePlayer = [[MPMoviePlayerController alloc] init];
     
     // check if user logged in. show login page only when user not logged in
     PFUser *currentUser = [PFUser currentUser];
@@ -104,6 +109,62 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // when tap message
+    // if message is a picture then view image in new ImageViewController
+    // firstly access the file type
+    
+    // updated to use @property to store the selected message
+    self.selectedMessage = [self.messages objectAtIndex:indexPath.row];
+    NSString *fileType = [self.selectedMessage objectForKey:@"fileType"];
+    //PFObject *message = [self.messages objectAtIndex:indexPath.row];
+    //NSString *fileType = [message objectForKey:@"fileType"];
+    if ([fileType isEqualToString:@"image"]) {
+        // perform Segue in Storyboard with identifier 'showImage'
+        [self performSegueWithIdentifier:@"showImage" sender:self];
+        // get image contained in the message displayed to the ImageViewController
+        // pass data between view controllers with mechanism of setting @properties in the prepareForSegue method
+    } else {
+        // video file type situation
+        // specify URL for the video content from PFFile Object
+        // first assocate PFFile with this message
+        PFFile *videoFile = [self.selectedMessage objectForKey:@"file"];
+        NSURL *fileUrl = [NSURL URLWithString:videoFile.url];
+        // set URL for movie player
+        self.moviePlayer.contentURL = fileUrl;
+        [self.moviePlayer prepareToPlay];
+        // thumbnail to appear before video starts
+        // start immediately, grab the thumbnail exactly at time specified not required so set to start at nearest keyframe which is better for performance purposes
+        [self.moviePlayer thumbnailImageAtTime:0 timeOption:MPMovieTimeOptionNearestKeyFrame];
+        // add movie player to View Controllers hierarchy so we can view it
+        [self.view addSubview:self.moviePlayer.view];
+        // set to run at full-screen after added view to hierarchy
+        [self.moviePlayer setFullscreen:YES animated:YES];
+    }
+    
+    // process to delete message and file from back-end after all recipients have read them
+    // first check the recipients.
+    // noting that the message Object that we're dealing with corresponds to the message for the row that we're on (which is already stored in the 'selectedMessage' variable
+    // the key 'recipientIds' is storing an array of the recipients in the message database class/table
+    // get array and store in a mutable array that we'll be deleting from
+    NSMutableArray *recipientIds = [NSMutableArray arrayWithArray:[self.selectedMessage objectForKey:@"recipientIds"]];
+    // log to watch recipients being deleted
+    NSLog(@"Recipients: %@", recipientIds);
+    
+    if ([recipientIds count] == 1) {
+        // last recipient delete
+        // call delete method on the PFObject object
+        [self.selectedMessage deleteInBackground];
+    } else {
+        // remove recipient locally and save it. 'removeObject' method searches array for the object that is passed in and removes it if found. note that the ids are strings
+        [recipientIds removeObject:[[PFUser currentUser] objectId]];
+        
+        // let the back-end know that we made this change
+        // update the recipients array in our selectedMessage PFObject
+        // then call one of its save methods to save in the back-end
+        [self.selectedMessage setObject:recipientIds forKey:@"recipientIds"];
+        [self.selectedMessage saveInBackground];
+        // we have deleted the PFObjects (that reference the PFFiles), but not delete the files themselves on the Parse.com servers
+    }
     
 }
 
@@ -120,6 +181,18 @@
     // check identifer of segue incase there is more than one in view controller
     if ([segue.identifier isEqualToString:@"showLogin"]) {
         [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+    } else if ([segue.identifier isEqualToString:@"showImage"]) {
+        [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
+        
+        // access properties of 'destinationViewController' variable
+        // after firstly casting it to the appropriate type
+        // declare new ImageViewController variable (after #importing it)
+        ImageViewController *imageViewController = (ImageViewController *)segue.destinationViewController;
+        // now can access properties of imageViewController variable
+        // store message that was selected into a new @property defined in header 'selectedMessage'
+        // and set it in didSelectRowAtIndexPath when the message was selected
+        // now set the message property to the stored @property 'selectedMessage'
+        imageViewController.message = self.selectedMessage;
     }
 }
 
